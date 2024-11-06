@@ -2,6 +2,8 @@
 
 Este projeto implementa uma API para gerenciamento de usuários utilizando **Express.js** e **Sequelize** com **SQLite** como banco de dados. A API possui rotas para criação, listagem e busca de usuários.
 
+Equipe: Samuel Paiva, Julio Correa, Luiz Felipe, Matheus Rezende, Bruno Daniel e Yurik Motoyama
+
 ## Tecnologias Utilizadas
 
 - **Node.js** - Ambiente de execução para o código JavaScript no servidor.
