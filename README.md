@@ -25,14 +25,14 @@ Certifique-se de ter as seguintes dependências instaladas em sua máquina:
 
 Clone o repositório para sua máquina local utilizando o comando abaixo:
 
-git clone <URL do repositório>
-cd <diretório do projeto>
+    git clone <URL do repositório>
+    cd <diretório do projeto>
 
 ### 2. Instalar as Dependências
 
 Instale as dependências do projeto com o comando npm:
 
-npm install
+    npm install
 
 ### 3. Configuração do Banco de Dados
 
