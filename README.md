@@ -40,9 +40,9 @@ O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar
 
 O arquivo de configuração do banco de dados está localizado em config/config.json.
 
-Ambiente de Desenvolvimento:
-  Dialeto: sqlite
-  Localização do banco de dados: ./database.sqlite3
+    Ambiente de Desenvolvimento:
+      Dialeto: sqlite
+      Localização do banco de dados: ./database.sqlite3
 
 ### 4. Rodar as Migrações
 
@@ -50,7 +50,7 @@ As migrações configuram o banco de dados criando as tabelas e suas relações.
 
 Rodar a migração para criar a tabela Users:
 
-npx sequelize-cli db:migrate
+    npx sequelize-cli db:migrate
 
 Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.
 
@@ -58,7 +58,7 @@ Isso criará a tabela Users no banco de dados SQLite definido em config/config.j
 
 Execute o servidor utilizando o seguinte comando:
 
-npm start
+    npm start
 
 A API estará rodando localmente na porta 3000. Você pode acessar as rotas da API nos seguintes endpoints:
 
@@ -88,7 +88,7 @@ Body (JSON):
   "cpf": "12345678900",
   "nascimento": "1990-05-15",
   "senha": "senha123"
-}
+}    
 
 Exemplo de Resposta:
 Status 201 (Created):
