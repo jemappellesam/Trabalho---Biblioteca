@@ -165,17 +165,17 @@ Este endpoint retorna os detalhes de um usuário específico com base no seu ID.
 
 
 ### Estrutura do Projeto
-.
-├── config/
-│   └── config.json         
-├── migrations/
-│   └── 20241031163014-create-user.js   
-├── models/
-│   ├── index.js          
-│   └── user.js             
-├── routes/
-│   └── usuarios.js         
-├── app.js                  
-├── .sequelizerc           
-├── package.json           
-└── README.md           
+    .
+    ├── config/
+    │   └── config.json         
+    ├── migrations/
+    │   └── 20241031163014-create-user.js   
+    ├── models/
+    │   ├── index.js          
+    │   └── user.js             
+    ├── routes/
+    │   └── usuarios.js         
+    ├── app.js                  
+    ├── .sequelizerc           
+    ├── package.json           
+    └── README.md           
