@@ -63,7 +63,9 @@ Execute o servidor utilizando o seguinte comando:
 A API estará rodando localmente na porta 3000. Você pode acessar as rotas da API nos seguintes endpoints:
 
 POST /usuarios: Cadastrar um novo usuário.
+
 GET /usuarios: Listar todos os usuários.
+
 GET /usuarios/: Buscar um usuário pelo ID.
 
 ### Endpoints da API
