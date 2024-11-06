@@ -80,88 +80,88 @@ cpf (string): CPF do usuário (deve ser único).
 nascimento (date): Data de nascimento do usuário.
 senha (string): Senha do usuário.
 
-Exemplo de Requisição:
-URL: http://localhost:3000/usuarios
-Método: POST
-Body (JSON):
-{
-  "nome": "João Silva",
-  "email": "joao.silva@example.com",
-  "cpf": "12345678900",
-  "nascimento": "1990-05-15",
-  "senha": "senha123"
-}    
+    Exemplo de Requisição:
+    URL: http://localhost:3000/usuarios
+    Método: POST
+    Body (JSON):
+    {
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "cpf": "12345678900",
+      "nascimento": "1990-05-15",
+      "senha": "senha123"
+    }    
 
-Exemplo de Resposta:
-Status 201 (Created):
-{
-  "id": 1,
-  "nome": "João Silva",
-  "email": "joao.silva@example.com",
-  "cpf": "12345678900",
-  "nascimento": "1990-05-15T00:00:00.000Z",
-  "senha": "senha123",
-  "createdAt": "2024-11-06T11:54:08.252Z",
-  "updatedAt": "2024-11-06T11:54:08.252Z"
-}
+    Exemplo de Resposta:
+    Status 201 (Created):
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "cpf": "12345678900",
+      "nascimento": "1990-05-15T00:00:00.000Z",
+      "senha": "senha123",
+      "createdAt": "2024-11-06T11:54:08.252Z",
+      "updatedAt": "2024-11-06T11:54:08.252Z"
+    }
 
-Respostas de Erro:
-Status 400 (Bad Request): Quando faltar algum campo obrigatório.
-{
-  "error": "Todos os campos são obrigatórios"
-}
+    Respostas de Erro:
+    Status 400 (Bad Request): Quando faltar algum campo obrigatório.
+    {
+      "error": "Todos os campos são obrigatórios"
+    }
 
 
 ### 2. GET /usuarios - Listar Todos os Usuários
 
 Este endpoint retorna uma lista de todos os usuários cadastrados no banco de dados.
 
-Exemplo de Requisição:
-URL: http://localhost:3000/usuarios
-Método: GET
-
-Exemplo de Resposta:
-Status 200 (OK):
-[
-  {
-    "id": 1,
-    "nome": "João Silva",
-    "email": "joao.silva@example.com",
-    "cpf": "12345678900",
-    "nascimento": "1990-05-15T00:00:00.000Z",
-    "senha": "senha123",
-    "createdAt": "2024-11-06T11:54:08.252Z",
-    "updatedAt": "2024-11-06T11:54:08.252Z"
-  }
-]
+    Exemplo de Requisição:
+    URL: http://localhost:3000/usuarios
+    Método: GET
+    
+    Exemplo de Resposta:
+    Status 200 (OK):
+    [
+      {
+        "id": 1,
+        "nome": "João Silva",
+        "email": "joao.silva@example.com",
+        "cpf": "12345678900",
+        "nascimento": "1990-05-15T00:00:00.000Z",
+        "senha": "senha123",
+        "createdAt": "2024-11-06T11:54:08.252Z",
+        "updatedAt": "2024-11-06T11:54:08.252Z"
+      }
+    ]
 
 
 ### 3. GET /usuarios/ - Buscar um Usuário por ID
 
 Este endpoint retorna os detalhes de um usuário específico com base no seu ID.
 
-Exemplo de Requisição:
-URL: http://localhost:3000/usuarios/1
-Método: GET
+    Exemplo de Requisição:
+    URL: http://localhost:3000/usuarios/1
+    Método: GET
+    
+    Exemplo de Resposta:
+    Status 200 (OK):
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "cpf": "12345678900",
+      "nascimento": "1990-05-15T00:00:00.000Z",
+      "senha": "senha123",
+      "createdAt": "2024-11-06T11:54:08.252Z",
+      "updatedAt": "2024-11-06T11:54:08.252Z"
+    }
 
-Exemplo de Resposta:
-Status 200 (OK):
-{
-  "id": 1,
-  "nome": "João Silva",
-  "email": "joao.silva@example.com",
-  "cpf": "12345678900",
-  "nascimento": "1990-05-15T00:00:00.000Z",
-  "senha": "senha123",
-  "createdAt": "2024-11-06T11:54:08.252Z",
-  "updatedAt": "2024-11-06T11:54:08.252Z"
-}
-
-Resposta de Erro:
-Status 404 (Not Found): Caso o usuário com o ID fornecido não exista.
-{
-  "error": "Usuário não encontrado"
-}
+    Resposta de Erro:
+    Status 404 (Not Found): Caso o usuário com o ID fornecido não exista.
+    {
+      "error": "Usuário não encontrado"
+    }
 
 
 ### Estrutura do Projeto
