@@ -1,21 +1,25 @@
-const { DataTypes, Sequelize } = require('sequelize');
-const config = require('../config/config.json'); 
-const sequelize = new Sequelize(config.development); 
+'use strict';
+const { DataTypes } = require('sequelize');
 
-const Loan = sequelize.define('Loan', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true
-  },
-  livro: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  usuario: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-});
+module.exports = (sequelize) => {
+  const Loan = sequelize.define('Loan', {
+    livroId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Books',
+        key: 'id'
+      }
+    },
+    usuarioId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
+    }
+  });
 
-module.exports = Loan;
+  return Loan;
+};

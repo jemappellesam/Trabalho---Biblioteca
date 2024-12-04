@@ -9,14 +9,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
+      livroId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Books', // Relaciona a chave estrangeira com a tabela 'Books'
+          key: 'id'
+        }
       },
-      livro: {
-        type: Sequelize.STRING
-      },
-      usuario: {
-        type: Sequelize.STRING
+      usuarioId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users', // Relaciona a chave estrangeira com a tabela 'Users'
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +35,7 @@ module.exports = {
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Loans');
   }
