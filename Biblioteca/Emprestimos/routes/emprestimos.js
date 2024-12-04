@@ -56,7 +56,7 @@ router.post('/:id/devolucao', async (req, res) => {
     await emprestimo.save();
 
     // Atualizar a disponibilidade do livro
-    const livro = await Book.findByPk(emprestimo.livroId);
+    const livro = await book.findByPk(emprestimo.livroId);
     livro.disponibilidade = true;
     await livro.save();
 
@@ -73,14 +73,14 @@ router.get('/', async (req, res) => {
     const emprestimos = await Loan.findAll({
       include: [
         {
-          model: User,
-          as: 'User',  // Usando o alias da associação definida
-          attributes: ['id', 'nome', 'email'], // Especificar os campos do usuário que você deseja retornar
+          model: user,
+          as: 'user',  // Usando o alias da associação definida
+          attributes: ['cpf', 'nome'], // Especificar os campos do usuário que você deseja retornar
         },
         {
-          model: Book,
-          as: 'Book',  // Usando o alias da associação definida
-          attributes: ['id', 'titulo', 'autor'], // Especificar os campos do livro que você deseja retornar
+          model: book,
+          as: 'book',  // Usando o alias da associação definida
+          attributes: ['titulo', 'autor'], // Especificar os campos do livro que você deseja retornar
         },
       ],
     });
@@ -91,7 +91,7 @@ router.get('/', async (req, res) => {
       data_empréstimo: emprestimo.data_empréstimo,
       data_devolucao: emprestimo.data_devolucao,
       usuario: emprestimo.User,
-      livro: emprestimo.Book,
+      livro: emprestimo.book,
     })));
   } catch (error) {
     return res.status(500).json({
