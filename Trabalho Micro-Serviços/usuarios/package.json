@@ -1,0 +1,14 @@
+{
+    "name": "usuarios",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.21.1",
+        "sequelize": "^6.37.5",
+        "sequelize-cli": "^6.6.2",
+        "sqlite3": "^5.1.7"
+    }
+}
