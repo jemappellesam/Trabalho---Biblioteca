@@ -102,7 +102,7 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
     
             npm start
     
-    - **A API estará rodando localmente na porta 3001, 3002 e 3003.**
+    - **Cada uma das APIs estará rodando localmente nas portas 3001, 3002 e 3003.**
 
 # Endpoints da API
 
