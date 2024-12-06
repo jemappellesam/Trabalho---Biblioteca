@@ -52,15 +52,15 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
     
     - **Exemplo de Requisição:**
     
-        ```json
-            {
-              "nome": "João Silva",
-              "email": "joao.silva@example.com",
-              "cpf": "12345678900",
-              "nascimento": "1990-05-15",
-              "senha": "senha123"
-            }
-    
+    ```json
+    {
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "cpf": "12345678900",
+      "nascimento": "1990-05-15",
+      "senha": "senha123"
+    }
+
 
     ``` Exemplo de Requisição:
         **Método**: POST  
