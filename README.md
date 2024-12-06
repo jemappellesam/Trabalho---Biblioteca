@@ -50,9 +50,11 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
     - **nascimento (date): Data de nascimento do usuário.**
     - **senha (string): Senha do usuário.**
     
-    - **Exemplo de Requisição:**
     
     ```json
+
+    # Exemplo de Requisição:
+    
     {
       "nome": "João Silva",
       "email": "joao.silva@example.com",
@@ -61,19 +63,21 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
       "senha": "senha123"
     }
 
+    # Exemplo de Resposta:
+    
+    # Status 201 (Created):
+    
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "cpf": "12345678900",
+      "nascimento": "1990-05-15T00:00:00.000Z",
+      "senha": "senha123",
+      "createdAt": "2024-11-06T11:54:08.252Z",
+      "updatedAt": "2024-11-06T11:54:08.252Z"
+    }
 
-    ``` Exemplo de Requisição:
-        **Método**: POST  
-        **Body (JSON)**:
-        
-        ```json
-        {
-          "nome": "João Silva",
-          "email": "joao.silva@example.com",
-          "cpf": "12345678900",
-          "nascimento": "1990-05-15",
-          "senha": "senha123"
-        }
 
 Respostas de Erro:
 Status 400 (Bad Request): Quando faltar algum campo obrigatório.
