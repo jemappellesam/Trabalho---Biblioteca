@@ -80,17 +80,7 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
     
 - **Cadastro e Gerenciamento de Livros:**
   - ****O Serviço de Livros permite o cadastro, consulta e atualização dos livros, sendo consultado pelo Serviço de Empréstimos para verificar a disponibilidade dos livros e pelo Serviço de Usuários para garantir que o livro não seja emprestado a um usuário não             cadastrado.****
-
-
-
-
-
-
-
-
-
-
-
+    
 ## Passo a Passo para Rodar o Projeto
 
 Certifique-se de ter as seguintes dependências instaladas em sua máquina:
