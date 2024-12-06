@@ -63,7 +63,7 @@ O **Serviço de Empréstimos** gerencia os empréstimos e devoluções de livros
 - **GET /emprestimos:** Listar todos os empréstimos registrados.
 - **POST /emprestimos/:id/devolucao:** Registrar a devolução de um livro emprestado, atualizando o status do livro para "disponível".
 
-## Como os Microserviços se Comunicão
+# Como os Microserviços se Comunicão
 
 Os três microserviços comunicam-se entre si para realizar as operações necessárias. Aqui está como eles interagem:
 
