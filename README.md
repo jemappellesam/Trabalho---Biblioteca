@@ -93,7 +93,7 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
     ```json
           # Exemplo de Requisição:
     
-              URL: http://localhost:3000/usuarios
+              **URL: http://localhost:3000/usuarios**
     
           # Método: GET
           # Exemplo de Resposta:
