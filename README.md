@@ -50,7 +50,8 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
     - **cpf (string): CPF do usuário (deve ser único).**
     - **nascimento (date): Data de nascimento do usuário.**
     - **senha (string): Senha do usuário.**
-    
+
+  
     ```json
     # Exemplo de Requisição:
     
