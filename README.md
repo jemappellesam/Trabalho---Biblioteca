@@ -1,6 +1,6 @@
-# Projeto de API de Usuários
+# Arquitetura de Microserviços - Sistema de Gerenciamento de Biblioteca
 
-Este projeto implementa uma API para gerenciamento de usuários utilizando **Express.js** e **Sequelize** com **SQLite** como banco de dados. A API possui rotas para criação, listagem e busca de usuários.
+Este projeto implementa um sistema de gerenciamento de biblioteca baseado na arquitetura de microserviços. A aplicação é distribuída em três microserviços independentes, cada um responsável por uma parte específica da aplicação, com comunicação entre eles através de APIs REST e formato de dados JSON.
 
 Equipe: Samuel Paiva, Julio Correa, Luiz Felipe, Matheus Rezende, Bruno Daniel e Yurik Motoyama
 
@@ -12,7 +12,82 @@ Equipe: Samuel Paiva, Julio Correa, Luiz Felipe, Matheus Rezende, Bruno Daniel e
 - **SQLite** - Banco de dados leve para persistência dos dados.
 - **Sequelize CLI** - Ferramenta para gerenciar o banco de dados e rodar migrações.
 
-## Pré-Requisitos
+## Microserviços
+
+- **Serviço de Usuários:** Gerencia os usuários da biblioteca, incluindo informações como nome, email, CPF e data de nascimento.
+- **Serviço de Livros:** Gerencia o catálogo de livros da biblioteca, incluindo título, autor e disponibilidade dos livros.
+- **Serviço de Empréstimos:** Gerencia os empréstimos e devoluções dos livros, verificando a disponibilidade dos livros e a validade dos usuários.
+
+## Funcionamento da Aplicação
+
+A aplicação é estruturada em três serviços independentes, cada um com suas próprias responsabilidades, mas que se comunicam entre si para oferecer a funcionalidade completa de gerenciamento de uma biblioteca. As interações entre os serviços ocorrem por meio de APIs REST.
+
+### Fluxo de Interação:
+
+- **Serviço de Empréstimos:**
+    - ****Quando um usuário solicita um empréstimo de um livro, o Serviço de Empréstimos verifica se o livro está disponível, consultando o Serviço de Livros.****
+    - ****O Serviço de Empréstimos também verifica se o usuário que está solicitando o empréstimo é válido, consultando o Serviço de Usuários.****
+    - ****Se o livro estiver disponível e o usuário for válido, o empréstimo é registrado e o status do livro é atualizado para "emprestado".****
+      
+- **Serviço de Livros:**
+    - ****O Serviço de Livros gerencia a criação, listagem e atualização de livros no catálogo, incluindo a disponibilidade dos livros (disponível ou emprestado).****
+
+- **Serviço de Usuários:**
+    - ****O Serviço de Usuários gerencia as informações de todos os usuários cadastrados na biblioteca, como alunos e funcionários.****
+
+## Endpoints da API
+
+### Serviço de Usuários
+
+O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de usuários da biblioteca.
+
+- **POST /usuarios:** Cadastrar um novo usuário na biblioteca.
+- **GET /usuarios:** Listar todos os usuários cadastrados.
+- **GET /usuarios/:id:** Buscar um usuário específico pelo ID.
+
+  
+### Serviço de Livros
+
+O **Serviço de Livros** gerencia o catálogo de livros e a disponibilidade dos mesmos.
+
+- **POST /livros:** Cadastrar um novo livro no catálogo.
+- **GET /livros:** Listar todos os livros disponíveis no catálogo.
+- **GET /livros/:id:** Buscar um livro específico pelo ID.
+- **PATCH /livros/:id:** Atualizar a disponibilidade de um livro (por exemplo, marcar como "disponível" ou "emprestado").
+  
+### Serviço de Empréstimos
+
+O **Serviço de Empréstimos** gerencia os empréstimos e devoluções de livros.
+
+- **POST /emprestimos:** Registrar um empréstimo de um livro para um usuário. O serviço verifica se o livro está disponível e se o usuário existe.
+- **GET /emprestimos:** Listar todos os empréstimos registrados.
+- **POST /emprestimos/:id/devolucao:** Registrar a devolução de um livro emprestado, atualizando o status do livro para "disponível".
+
+## Como os Microserviços se Comunicão
+
+Os três microserviços comunicam-se entre si para realizar as operações necessárias. Aqui está como eles interagem:
+
+- **Empréstimo de Livro:**
+    - ****Quando um usuário solicita o empréstimo de um livro, o Serviço de Empréstimos faz duas verificações:****
+        1. ****Verifica se o livro está disponível: Para isso, consulta o Serviço de Livros.****
+        2. ****Verifica se o usuário existe: Através de uma consulta ao Serviço de Usuários.****
+           
+- **Atualização de Disponibilidade de Livro:**
+    - ****Quando um empréstimo é registrado com sucesso, o Serviço de Empréstimos atualiza o status do livro para "emprestado", utilizando a API do Serviço de Livros.****
+      
+- **Cadastro e Gerenciamento de Usuários:**
+  - ****O Serviço de Usuários cuida do cadastro, listagem e consulta dos usuários. Quando um novo usuário se cadastra ou quando um usuário solicita um empréstimo, o Serviço de Empréstimos consulta o serviço para validar o usuário.****
+    
+- **Cadastro e Gerenciamento de Livros:**
+  - ****O Serviço de Livros permite o cadastro, consulta e atualização dos livros, sendo consultado pelo Serviço de Empréstimos para verificar a disponibilidade dos livros e pelo Serviço de Usuários para garantir que o livro não seja emprestado a um usuário não             cadastrado.****
+
+
+
+
+
+
+
+
 
 Certifique-se de ter as seguintes dependências instaladas em sua máquina:
 
