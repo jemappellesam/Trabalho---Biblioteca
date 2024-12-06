@@ -77,15 +77,6 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
       "updatedAt": "2024-11-06T11:54:08.252Z"
     }
 
-
-    # Respostas de Erro:
-    
-    # Status 400 (Bad Request): Quando faltar algum campo obrigatório.
-    
-    {
-      "error": "Todos os campos são obrigatórios"
-    }
-  
 - **GET /usuarios:** Listar todos os usuários cadastrados.
   
   - **Este endpoint retorna uma lista de todos os usuários cadastrados no banco de dados.**
@@ -127,6 +118,7 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
   
 - **GET /usuarios/:id:** Buscar um usuário específico pelo ID.
     - **Este endpoint retorna os detalhes de um usuário específico com base no seu ID.**
+      
         ```json
             # Exemplo de Requisição:
         
