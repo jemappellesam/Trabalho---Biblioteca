@@ -91,11 +91,11 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
   - **Este endpoint retorna uma lista de todos os usuários cadastrados no banco de dados.**
   
     ```json
-          # Exemplo de Requisição: #
+          Exemplo de Requisição:
               URL: http://localhost:3000/usuarios
-          # Método: GET #
-          # Exemplo de Resposta: #
-          # Status 200 (OK): #
+          Método: GET
+          Exemplo de Resposta:
+          Status 200 (OK):
           [
               {
                   "id": 1,
