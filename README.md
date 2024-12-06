@@ -35,6 +35,72 @@ A aplicação é estruturada em três serviços independentes, cada um com suas 
 - **Serviço de Usuários:**
     - ****O Serviço de Usuários gerencia as informações de todos os usuários cadastrados na biblioteca, como alunos e funcionários.****
 
+# Como os Microserviços se Comunicão
+
+Os três microserviços comunicam-se entre si para realizar as operações necessárias. Aqui está como eles interagem:
+
+- **Empréstimo de Livro:**
+    - ****Quando um usuário solicita o empréstimo de um livro, o Serviço de Empréstimos faz duas verificações:****
+        1. ****Verifica se o livro está disponível: Para isso, consulta o Serviço de Livros.****
+        2. ****Verifica se o usuário existe: Através de uma consulta ao Serviço de Usuários.****
+           
+- **Atualização de Disponibilidade de Livro:**
+    - ****Quando um empréstimo é registrado com sucesso, o Serviço de Empréstimos atualiza o status do livro para "emprestado", utilizando a API do Serviço de Livros.****
+      
+- **Cadastro e Gerenciamento de Usuários:**
+  - ****O Serviço de Usuários cuida do cadastro, listagem e consulta dos usuários. Quando um novo usuário se cadastra ou quando um usuário solicita um empréstimo, o Serviço de Empréstimos consulta o serviço para validar o usuário.****
+    
+- **Cadastro e Gerenciamento de Livros:**
+  - ****O Serviço de Livros permite o cadastro, consulta e atualização dos livros, sendo consultado pelo Serviço de Empréstimos para verificar a disponibilidade dos livros e pelo Serviço de Usuários para garantir que o livro não seja emprestado a um usuário não             cadastrado.****
+
+# Passo a Passo para Rodar o Projeto
+
+Certifique-se de ter as seguintes dependências instaladas em sua máquina:
+
+- **Node.js**: [Instale o Node.js](https://nodejs.org/)
+- **npm** (gerenciador de pacotes do Node.js): Vem automaticamente com o Node.js.
+
+### 1. Clonar o Repositório
+
+Clone o repositório para sua máquina local utilizando o comando abaixo:
+
+    git clone <URL do repositório>
+    cd <diretório do projeto>
+
+### 2. Instalar as Dependências
+
+Instale as dependências do projeto com o comando npm:
+
+    npm install
+
+### 3. Configuração do Banco de Dados
+
+O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar e gerenciar o banco de dados localmente.
+
+O arquivo de configuração do banco de dados está localizado em config/config.json.
+
+    Ambiente de Desenvolvimento:
+      Dialeto: sqlite
+      Localização do banco de dados: ./database.sqlite3
+
+### 4. Rodar as Migrações
+
+As migrações configuram o banco de dados criando as tabelas e suas relações. No caso, a migração cria a tabela Users.
+
+Rodar a migração para criar a tabela Users:
+
+    npx sequelize-cli db:migrate
+
+Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.
+
+### 5. Rodar o Servidor
+
+Execute o servidor utilizando o seguinte comando:
+
+    npm start
+
+A API estará rodando localmente na porta 3000.
+
 # Endpoints da API
 
 ### Serviço de Usuários
@@ -158,70 +224,4 @@ O **Serviço de Empréstimos** gerencia os empréstimos e devoluções de livros
 - **POST /emprestimos:** Registrar um empréstimo de um livro para um usuário. O serviço verifica se o livro está disponível e se o usuário existe.
 - **GET /emprestimos:** Listar todos os empréstimos registrados.
 - **POST /emprestimos/:id/devolucao:** Registrar a devolução de um livro emprestado, atualizando o status do livro para "disponível".
-
-# Como os Microserviços se Comunicão
-
-Os três microserviços comunicam-se entre si para realizar as operações necessárias. Aqui está como eles interagem:
-
-- **Empréstimo de Livro:**
-    - ****Quando um usuário solicita o empréstimo de um livro, o Serviço de Empréstimos faz duas verificações:****
-        1. ****Verifica se o livro está disponível: Para isso, consulta o Serviço de Livros.****
-        2. ****Verifica se o usuário existe: Através de uma consulta ao Serviço de Usuários.****
-           
-- **Atualização de Disponibilidade de Livro:**
-    - ****Quando um empréstimo é registrado com sucesso, o Serviço de Empréstimos atualiza o status do livro para "emprestado", utilizando a API do Serviço de Livros.****
-      
-- **Cadastro e Gerenciamento de Usuários:**
-  - ****O Serviço de Usuários cuida do cadastro, listagem e consulta dos usuários. Quando um novo usuário se cadastra ou quando um usuário solicita um empréstimo, o Serviço de Empréstimos consulta o serviço para validar o usuário.****
-    
-- **Cadastro e Gerenciamento de Livros:**
-  - ****O Serviço de Livros permite o cadastro, consulta e atualização dos livros, sendo consultado pelo Serviço de Empréstimos para verificar a disponibilidade dos livros e pelo Serviço de Usuários para garantir que o livro não seja emprestado a um usuário não             cadastrado.****
-    
-# Passo a Passo para Rodar o Projeto
-
-Certifique-se de ter as seguintes dependências instaladas em sua máquina:
-
-- **Node.js**: [Instale o Node.js](https://nodejs.org/)
-- **npm** (gerenciador de pacotes do Node.js): Vem automaticamente com o Node.js.
-
-### 1. Clonar o Repositório
-
-Clone o repositório para sua máquina local utilizando o comando abaixo:
-
-    git clone <URL do repositório>
-    cd <diretório do projeto>
-
-### 2. Instalar as Dependências
-
-Instale as dependências do projeto com o comando npm:
-
-    npm install
-
-### 3. Configuração do Banco de Dados
-
-O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar e gerenciar o banco de dados localmente.
-
-O arquivo de configuração do banco de dados está localizado em config/config.json.
-
-    Ambiente de Desenvolvimento:
-      Dialeto: sqlite
-      Localização do banco de dados: ./database.sqlite3
-
-### 4. Rodar as Migrações
-
-As migrações configuram o banco de dados criando as tabelas e suas relações. No caso, a migração cria a tabela Users.
-
-Rodar a migração para criar a tabela Users:
-
-    npx sequelize-cli db:migrate
-
-Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.
-
-### 5. Rodar o Servidor
-
-Execute o servidor utilizando o seguinte comando:
-
-    npm start
-
-A API estará rodando localmente na porta 3000. Você pode acessar as rotas da API nos seguintes endpoints:
        
