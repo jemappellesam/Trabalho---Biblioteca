@@ -92,10 +92,15 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
   
     ```json
           Exemplo de Requisição:
+    
               URL: http://localhost:3000/usuarios
+    
           Método: GET
+    
           Exemplo de Resposta:
+    
           Status 200 (OK):
+    
           [
               {
                   "id": 1,
@@ -106,12 +111,43 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
                   "senha": "senha123",
                   "createdAt": "2024-11-06T11:54:08.252Z",
                   "updatedAt": "2024-11-06T11:54:08.252Z"
+              },
+              {
+                  "id": 2,
+                  "nome": "João",
+                  "email": "joao.@example.com",
+                  "cpf": "12985678900",
+                  "nascimento": "1990-05-15T00:00:00.000Z",
+                  "senha": "senha1234",
+                  "createdAt": "2024-11-06T11:56:18.552Z",
+                  "updatedAt": "2024-11-06T11:56:18.552Z"
               }
           ]
 
   
 - **GET /usuarios/:id:** Buscar um usuário específico pelo ID.
+    - **Este endpoint retorna os detalhes de um usuário específico com base no seu ID.**
+        ```json
+            # Exemplo de Requisição:
+        
+                URL: http://localhost:3000/usuarios/1
+        
+            # Método: GET
+            
+            # Exemplo de Resposta:
 
+            # Status 200 (OK):
+        
+            {
+              "id": 1,
+              "nome": "João Silva",
+              "email": "joao.silva@example.com",
+              "cpf": "12345678900",
+              "nascimento": "1990-05-15T00:00:00.000Z",
+              "senha": "senha123",
+              "createdAt": "2024-11-06T11:54:08.252Z",
+              "updatedAt": "2024-11-06T11:54:08.252Z"
+            }
   
 ### Serviço de Livros
 
@@ -195,43 +231,4 @@ Execute o servidor utilizando o seguinte comando:
     npm start
 
 A API estará rodando localmente na porta 3000. Você pode acessar as rotas da API nos seguintes endpoints:
-
-POST /usuarios: Cadastrar um novo usuário.
-
-GET /usuarios: Listar todos os usuários.
-
-GET /usuarios/: Buscar um usuário pelo ID.
-
-
-### 2. GET /usuarios - Listar Todos os Usuários
-
-
-
-
-### 3. GET /usuarios/ - Buscar um Usuário por ID
-
-Este endpoint retorna os detalhes de um usuário específico com base no seu ID.
-
-    Exemplo de Requisição:
-    URL: http://localhost:3000/usuarios/1
-    Método: GET
-    
-    Exemplo de Resposta:
-    Status 200 (OK):
-    {
-      "id": 1,
-      "nome": "João Silva",
-      "email": "joao.silva@example.com",
-      "cpf": "12345678900",
-      "nascimento": "1990-05-15T00:00:00.000Z",
-      "senha": "senha123",
-      "createdAt": "2024-11-06T11:54:08.252Z",
-      "updatedAt": "2024-11-06T11:54:08.252Z"
-    }
-
-    Resposta de Erro:
-    Status 404 (Not Found): Caso o usuário com o ID fornecido não exista.
-    {
-      "error": "Usuário não encontrado"
-    }
        
