@@ -69,7 +69,8 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 
 3. **Instalar as Dependências**
 
-    - **Instale as dependências do projeto com o comando npm:**
+    - **Cada serviço precisa ter suas dependências instaladas:**
+    - Portanto, navegue pelo CMD até até cada um dos diretórios dos serviços. Exemplo: \Trabalho---Biblioteca\Trabalho Micro-Serviços\emprestimos e execute o seguinte comando:
     
             npm install
 
@@ -78,6 +79,7 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
     - **O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar e gerenciar o banco de dados localmente.**
     
     - **O arquivo de configuração do banco de dados está localizado em config/config.json.**
+    - Lembre que cada serviço possui seu banco de dados de forma independente
     
             Ambiente de Desenvolvimento:
               Dialeto: sqlite
@@ -85,17 +87,18 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 
 5. **Rodar as Migrações**
 
-    - **As migrações configuram o banco de dados criando as tabelas e suas relações. No caso, a migração cria a tabela Users.
+    - **As migrações configuram o banco de dados criando as tabelas e suas relações. 
     
-    - **Rodar a migração para criar a tabela Users:
+    - **Rodar a migração:
     
              npx sequelize-cli db:migrate
 
-    - **Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.**
+    - **Isso criará as tabelas  no banco de dados SQLite definido em config/config.json.**
 
 6. **Rodar o Servidor**
 
     - **Execute o servidor utilizando o seguinte comando:**
+    - Novamente, cada serviço precisa ser ligado de forma indepentende para o funcionamento completo do sistema. Portanto, atente-se a abrir 3 janelas diferentes do prompt de comando e executar o arquivo app.js de cada um dos serviços a partir do script especificado pelo comando citado.
     
             npm start
     
