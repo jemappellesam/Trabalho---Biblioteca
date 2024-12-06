@@ -42,6 +42,7 @@ A aplicação é estruturada em três serviços independentes, cada um com suas 
 O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de usuários da biblioteca.
 
 - **POST /usuarios:** Cadastrar um novo usuário na biblioteca.
+  
   - **Este endpoint recebe um objeto no corpo da requisição com os seguintes campos:**
 
     - **nome (string): Nome do usuário.**
@@ -77,13 +78,40 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
     }
 
 
-Respostas de Erro:
-Status 400 (Bad Request): Quando faltar algum campo obrigatório.
-{
-  "error": "Todos os campos são obrigatórios"
-}
+    # Respostas de Erro:
+    
+    # Status 400 (Bad Request): Quando faltar algum campo obrigatório.
+    
+    {
+      "error": "Todos os campos são obrigatórios"
+    }
   
 - **GET /usuarios:** Listar todos os usuários cadastrados.
+  
+  - **Este endpoint retorna uma lista de todos os usuários cadastrados no banco de dados.**
+  
+    ```json
+          # Exemplo de Requisição:
+    
+              URL: http://localhost:3000/usuarios
+    
+          # Método: GET
+          # Exemplo de Resposta:
+          # Status 200 (OK):
+          [
+              {
+                  "id": 1,
+                  "nome": "João Silva",
+                  "email": "joao.silva@example.com",
+                  "cpf": "12345678900",
+                  "nascimento": "1990-05-15T00:00:00.000Z",
+                  "senha": "senha123",
+                  "createdAt": "2024-11-06T11:54:08.252Z",
+                  "updatedAt": "2024-11-06T11:54:08.252Z"
+              }
+          ]
+
+  
 - **GET /usuarios/:id:** Buscar um usuário específico pelo ID.
 
   
@@ -176,35 +204,10 @@ GET /usuarios: Listar todos os usuários.
 
 GET /usuarios/: Buscar um usuário pelo ID.
 
-### Endpoints da API
-
-### 1. POST /usuarios - Cadastrar um Novo Usuário
-
-
-
 
 ### 2. GET /usuarios - Listar Todos os Usuários
 
-Este endpoint retorna uma lista de todos os usuários cadastrados no banco de dados.
 
-    Exemplo de Requisição:
-    URL: http://localhost:3000/usuarios
-    Método: GET
-    
-    Exemplo de Resposta:
-    Status 200 (OK):
-    [
-      {
-        "id": 1,
-        "nome": "João Silva",
-        "email": "joao.silva@example.com",
-        "cpf": "12345678900",
-        "nascimento": "1990-05-15T00:00:00.000Z",
-        "senha": "senha123",
-        "createdAt": "2024-11-06T11:54:08.252Z",
-        "updatedAt": "2024-11-06T11:54:08.252Z"
-      }
-    ]
 
 
 ### 3. GET /usuarios/ - Buscar um Usuário por ID
