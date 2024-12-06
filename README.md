@@ -42,44 +42,44 @@ A aplicação é estruturada em três serviços independentes, cada um com suas 
 O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de usuários da biblioteca.
 
 - **POST /usuarios:** Cadastrar um novo usuário na biblioteca.
-  -**Este endpoint recebe um objeto no corpo da requisição com os seguintes campos:**
+  - **Este endpoint recebe um objeto no corpo da requisição com os seguintes campos:**
 
-    nome (string): Nome do usuário.
-    email (string): Email do usuário (deve ser único).
-    cpf (string): CPF do usuário (deve ser único).
-    nascimento (date): Data de nascimento do usuário.
-    senha (string): Senha do usuário.
+    - **nome (string): Nome do usuário.**
+    - **email (string): Email do usuário (deve ser único).**
+    - **cpf (string): CPF do usuário (deve ser único).**
+    - **nascimento (date): Data de nascimento do usuário.**
+    - **senha (string): Senha do usuário.**
     
-        Exemplo de Requisição:
-        URL: http://localhost:3000/usuarios
-        Método: POST
-        Body (JSON):
+    - **Exemplo de Requisição:**
+    
+        ```json
+            {
+              "nome": "João Silva",
+              "email": "joao.silva@example.com",
+              "cpf": "12345678900",
+              "nascimento": "1990-05-15",
+              "senha": "senha123"
+            }
+    
+
+    ``` Exemplo de Requisição:
+        **Método**: POST  
+        **Body (JSON)**:
+        
+        ```json
         {
           "nome": "João Silva",
           "email": "joao.silva@example.com",
           "cpf": "12345678900",
           "nascimento": "1990-05-15",
           "senha": "senha123"
-        }    
-    
-        Exemplo de Resposta:
-        Status 201 (Created):
-        {
-          "id": 1,
-          "nome": "João Silva",
-          "email": "joao.silva@example.com",
-          "cpf": "12345678900",
-          "nascimento": "1990-05-15T00:00:00.000Z",
-          "senha": "senha123",
-          "createdAt": "2024-11-06T11:54:08.252Z",
-          "updatedAt": "2024-11-06T11:54:08.252Z"
         }
-    
-        Respostas de Erro:
-        Status 400 (Bad Request): Quando faltar algum campo obrigatório.
-        {
-          "error": "Todos os campos são obrigatórios"
-        }
+
+Respostas de Erro:
+Status 400 (Bad Request): Quando faltar algum campo obrigatório.
+{
+  "error": "Todos os campos são obrigatórios"
+}
   
 - **GET /usuarios:** Listar todos os usuários cadastrados.
 - **GET /usuarios/:id:** Buscar um usuário específico pelo ID.
