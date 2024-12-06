@@ -4,7 +4,7 @@ Este projeto implementa um sistema de gerenciamento de biblioteca baseado na arq
 
 Equipe: Samuel Paiva, Julio Correa, Luiz Felipe, Matheus Rezende, Bruno Daniel e Yurik Motoyama
 
-## Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 - **Node.js** - Ambiente de execução para o código JavaScript no servidor.
 - **Express.js** - Framework para criação da API.
@@ -12,13 +12,13 @@ Equipe: Samuel Paiva, Julio Correa, Luiz Felipe, Matheus Rezende, Bruno Daniel e
 - **SQLite** - Banco de dados leve para persistência dos dados.
 - **Sequelize CLI** - Ferramenta para gerenciar o banco de dados e rodar migrações.
 
-## Microserviços
+# Microserviços
 
 - **Serviço de Usuários:** Gerencia os usuários da biblioteca, incluindo informações como nome, email, CPF e data de nascimento.
 - **Serviço de Livros:** Gerencia o catálogo de livros da biblioteca, incluindo título, autor e disponibilidade dos livros.
 - **Serviço de Empréstimos:** Gerencia os empréstimos e devoluções dos livros, verificando a disponibilidade dos livros e a validade dos usuários.
 
-## Funcionamento da Aplicação
+# Funcionamento da Aplicação
 
 A aplicação é estruturada em três serviços independentes, cada um com suas próprias responsabilidades, mas que se comunicam entre si para oferecer a funcionalidade completa de gerenciamento de uma biblioteca. As interações entre os serviços ocorrem por meio de APIs REST.
 
@@ -35,7 +35,7 @@ A aplicação é estruturada em três serviços independentes, cada um com suas 
 - **Serviço de Usuários:**
     - ****O Serviço de Usuários gerencia as informações de todos os usuários cadastrados na biblioteca, como alunos e funcionários.****
 
-## Endpoints da API
+# Endpoints da API
 
 ### Serviço de Usuários
 
@@ -81,7 +81,7 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 - **Cadastro e Gerenciamento de Livros:**
   - ****O Serviço de Livros permite o cadastro, consulta e atualização dos livros, sendo consultado pelo Serviço de Empréstimos para verificar a disponibilidade dos livros e pelo Serviço de Usuários para garantir que o livro não seja emprestado a um usuário não             cadastrado.****
     
-## Passo a Passo para Rodar o Projeto
+# Passo a Passo para Rodar o Projeto
 
 Certifique-se de ter as seguintes dependências instaladas em sua máquina:
 
