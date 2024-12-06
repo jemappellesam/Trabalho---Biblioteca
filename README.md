@@ -213,15 +213,211 @@ O **Serviço de Usuários** é responsável pelo cadastro, listagem e busca de u
 O **Serviço de Livros** gerencia o catálogo de livros e a disponibilidade dos mesmos.
 
 - **POST /livros:** Cadastrar um novo livro no catálogo.
-- **GET /livros:** Listar todos os livros disponíveis no catálogo.
-- **GET /livros/:id:** Buscar um livro específico pelo ID.
-- **PATCH /livros/:id:** Atualizar a disponibilidade de um livro (por exemplo, marcar como "disponível" ou "emprestado").
+
+  ```json
+        # Exemplo de Requisição:
   
+            {
+                "titulo": "Hobbit 5",
+                "autor": "J.R.R. Tolkien",
+                "disponivel": true  
+            }
+  
+        # Método: POST
+  
+        # Exemplo de Resposta:
+
+        # Status 201 (Created):
+    
+            {
+                "id": 10,
+                "titulo": "Hobbit 5",
+                "autor": "J.R.R. Tolkien",
+                "disponivel": true,
+                "updatedAt": "2024-12-06T12:31:06.799Z",
+                "createdAt": "2024-12-06T12:31:06.799Z"
+            }
+  
+- **GET /livros:** Listar todos os livros disponíveis no catálogo.
+  
+  ```json
+        # Exemplo de Requisição:
+        
+            URL: http://localhost:3002/api/livros
+        
+        # Método: GET
+        
+        # Exemplo de Resposta:
+        
+        # Status 200 (OK):
+        
+            {
+                "id": 1,
+                "titulo": "O Senhor dos Anéis: A Sociedade do Anel",
+                "autor": "J.R.R. Tolkien",
+                "disponivel": false,
+                "createdAt": "2024-12-05T05:40:02.100Z",
+                "updatedAt": "2024-12-05T15:22:09.494Z"
+            },
+            {
+                "id": 2,
+                "titulo": "1984",
+                "autor": "George Orwell",
+                "disponivel": false,
+                "createdAt": "2024-12-05T05:40:11.902Z",
+                "updatedAt": "2024-12-05T15:25:25.955Z"
+            }
+
+    
+- **GET /livros/:id:** Buscar um livro específico pelo ID.
+  
+  ```json
+        # Exemplo de Requisição:
+    
+            URL: http://localhost:3002/api/livros/1
+    
+        # Método: GET
+        
+        # Exemplo de Resposta:
+
+        # Status 200 (OK):
+    
+            {
+                "id": 1,
+                "titulo": "O Senhor dos Anéis: A Sociedade do Anel",
+                "autor": "J.R.R. Tolkien",
+                "disponivel": false,
+                "createdAt": "2024-12-05T05:40:02.100Z",
+                "updatedAt": "2024-12-05T15:22:09.494Z"
+            }
+
+
+- **PATCH /livros/:id:** Atualizar a disponibilidade de um livro (por exemplo, marcar como "disponível" ou "emprestado").
+
+  ```json
+        # Exemplo de Requisição:
+    
+            URL: http://localhost:3002/api/livros/1
+            Body:
+            {
+                "disponivel": "false"
+            }
+    
+        # Método: PATCH
+        
+        # Exemplo de Resposta:
+
+        # Status 200 (OK):
+    
+            {
+                "id": 10,
+                "titulo": "Hobbit 5",
+                "autor": "J.R.R. Tolkien",
+                "disponivel": false,
+                "createdAt": "2024-12-06T12:31:06.799Z",
+                "updatedAt": "2024-12-06T12:37:41.484Z"
+            }
+    
 ### Serviço de Empréstimos
 
 O **Serviço de Empréstimos** gerencia os empréstimos e devoluções de livros.
 
 - **POST /emprestimos:** Registrar um empréstimo de um livro para um usuário. O serviço verifica se o livro está disponível e se o usuário existe.
+
+  ```json
+        # Exemplo de Requisição:
+  
+              { 
+                "livroId": 7,
+                "usuarioId": 1
+              }
+  
+        # Método: POST
+  
+        # Exemplo de Resposta:
+
+        # Status 201 (Created):
+    
+            {
+                "dataEmprestimo": "2024-12-06T12:41:36.393Z",
+                "id": 4,
+                "livroId": 7,
+                "usuarioId": 1,
+                "status": "ativo",
+                "updatedAt": "2024-12-06T12:41:36.395Z",
+                "createdAt": "2024-12-06T12:41:36.395Z"
+            }
+  
 - **GET /emprestimos:** Listar todos os empréstimos registrados.
+
+  ```json
+        # Exemplo de Requisição:
+        
+            URL: http://localhost:3003/api/emprestimos
+        
+        # Método: GET
+        
+        # Exemplo de Resposta:
+        
+        # Status 200 (OK):
+        
+            [
+                {
+                    "id": 1,
+                    "livroId": 7,
+                    "usuarioId": 1,
+                    "dataEmprestimo": "2024-12-05T17:36:02.233Z",
+                    "dataDevolucao": "2024-12-05T17:51:56.567Z",
+                    "status": "devolvido",
+                    "createdAt": "2024-12-05T17:36:02.236Z",
+                    "updatedAt": "2024-12-05T17:51:56.569Z"
+                },
+                {
+                    "id": 2,
+                    "livroId": 8,
+                    "usuarioId": 2,
+                    "dataEmprestimo": "2024-12-05T18:07:03.708Z",
+                    "dataDevolucao": "2024-12-05T18:07:33.887Z",
+                    "status": "devolvido",
+                    "createdAt": "2024-12-05T18:07:03.711Z",
+                    "updatedAt": "2024-12-05T18:07:33.887Z"
+                },
+                {
+                    "id": 3,
+                    "livroId": 9,
+                    "usuarioId": 1,
+                    "dataEmprestimo": "2024-12-05T18:07:12.894Z",
+                    "dataDevolucao": null,
+                    "status": "ativo",
+                    "createdAt": "2024-12-05T18:07:12.895Z",
+                    "updatedAt": "2024-12-05T18:07:12.895Z"
+                }
+            ]
+
+
+
 - **POST /emprestimos/:id/devolucao:** Registrar a devolução de um livro emprestado, atualizando o status do livro para "disponível".
+
+    ```json
+        # Exemplo de Requisição:
+        
+            URL: http://localhost:3003/api/emprestimos/3/devolucao
+        
+        # Método: GET
+        
+        # Exemplo de Resposta:
+        
+        # Status 200 (OK):
+        
+            {
+                "id": 3,
+                "livroId": 9,
+                "usuarioId": 1,
+                "dataEmprestimo": "2024-12-05T18:07:12.894Z",
+                "dataDevolucao": "2024-12-06T12:44:13.728Z",
+                "status": "devolvido",
+                "createdAt": "2024-12-05T18:07:12.895Z",
+                "updatedAt": "2024-12-06T12:44:13.728Z"
+            }
+
        
