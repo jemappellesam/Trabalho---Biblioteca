@@ -55,51 +55,51 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 
 # Passo a Passo para Rodar o Projeto
 
-Certifique-se de ter as seguintes dependências instaladas em sua máquina:
+1. **Certifique-se de ter as seguintes dependências instaladas em sua máquina:**
 
-- **Node.js**: [Instale o Node.js](https://nodejs.org/)
-- **npm** (gerenciador de pacotes do Node.js): Vem automaticamente com o Node.js.
+    - **Node.js**: [Instale o Node.js](https://nodejs.org/)
+    - **npm** (gerenciador de pacotes do Node.js): Vem automaticamente com o Node.js.
 
-### 1. Clonar o Repositório
+2. **Clonar o Repositório**
 
-Clone o repositório para sua máquina local utilizando o comando abaixo:
+    - **Clone o repositório para sua máquina local utilizando o comando abaixo:**
 
-    git clone <URL do repositório>
-    cd <diretório do projeto>
+            git clone <URL do repositório>
+            cd <diretório do projeto>
 
-### 2. Instalar as Dependências
+3. **Instalar as Dependências**
 
-Instale as dependências do projeto com o comando npm:
+    - **Instale as dependências do projeto com o comando npm:**
+    
+            npm install
 
-    npm install
+4. **Configuração do Banco de Dados**
 
-### 3. Configuração do Banco de Dados
+    - **O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar e gerenciar o banco de dados localmente.**
+    
+    - **O arquivo de configuração do banco de dados está localizado em config/config.json.**
+    
+            Ambiente de Desenvolvimento:
+              Dialeto: sqlite
+              Localização do banco de dados: ./database.sqlite3
 
-O banco de dados utilizado é o SQLite. O Sequelize será responsável por criar e gerenciar o banco de dados localmente.
+5. **Rodar as Migrações**
 
-O arquivo de configuração do banco de dados está localizado em config/config.json.
+    - **As migrações configuram o banco de dados criando as tabelas e suas relações. No caso, a migração cria a tabela Users.
+    
+    - **Rodar a migração para criar a tabela Users:
+    
+             npx sequelize-cli db:migrate
 
-    Ambiente de Desenvolvimento:
-      Dialeto: sqlite
-      Localização do banco de dados: ./database.sqlite3
+    - **Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.**
 
-### 4. Rodar as Migrações
+6. **Rodar o Servidor**
 
-As migrações configuram o banco de dados criando as tabelas e suas relações. No caso, a migração cria a tabela Users.
-
-Rodar a migração para criar a tabela Users:
-
-    npx sequelize-cli db:migrate
-
-Isso criará a tabela Users no banco de dados SQLite definido em config/config.json.
-
-### 5. Rodar o Servidor
-
-Execute o servidor utilizando o seguinte comando:
-
-    npm start
-
-A API estará rodando localmente na porta 3000.
+    - **Execute o servidor utilizando o seguinte comando:**
+    
+            npm start
+    
+    - **A API estará rodando localmente na porta 30001, 3002 e 3003.**
 
 # Endpoints da API
 
