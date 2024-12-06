@@ -87,9 +87,9 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 
 5. **Rodar as Migrações**
 
-    - **As migrações configuram o banco de dados criando as tabelas e suas relações. 
+    - As migrações configuram o banco de dados criando as tabelas e suas relações. 
     
-    - **Rodar a migração:
+    - **Rodar a migração**:
     
              npx sequelize-cli db:migrate
 
