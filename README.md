@@ -89,14 +89,14 @@ Os três microserviços comunicam-se entre si para realizar as operações neces
 
 
 
+
+
+## Passo a Passo para Rodar o Projeto
+
 Certifique-se de ter as seguintes dependências instaladas em sua máquina:
 
 - **Node.js**: [Instale o Node.js](https://nodejs.org/)
 - **npm** (gerenciador de pacotes do Node.js): Vem automaticamente com o Node.js.
-
----
-
-## Passo a Passo para Rodar o Projeto
 
 ### 1. Clonar o Repositório
 
